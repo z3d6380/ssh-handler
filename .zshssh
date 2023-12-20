@@ -1,0 +1,6 @@
+#!/usr/bin/env sh
+
+eval "$(ssh-agent -s)" > /dev/null 2>&1
+ssh-add /home/user/your-private-key > /dev/null 2>&1
+# ssh-add /home/user/add-any-other-private-keys-below > /dev/null 2>&1
+trap 'test -n "$SSH_AGENT_PID" && eval $(/usr/bin/ssh-agent -k)' 0
